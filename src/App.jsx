@@ -27,13 +27,13 @@ export default function App() {
   const products = [
     {
       id: 1,
-      name: "Rolex",
+      name: "Rolex Classic",
       price: 200,
       category: "luxury",
       isRealPhoto: true,
       colors: [
         { name: "Vert/Or", image: "rolex1.png" },
-        { name: "Or/Rose", image: "rolex2.png" },
+        { name: "Or/Blanc", image: "rolex2.png" },
         { name: "Argenté/Or", image: "rolex4.png" },
         { name: "Vert foncé/Or", image: "rolex3.png" },
       ],
@@ -186,7 +186,7 @@ export default function App() {
       return;
     }
 
-    const phoneNumber = "212657425822";
+    const phoneNumber = "212786511901"; // Numéro du contact footer: +212 786 511 901
     
     const parts = [];
     parts.push("✨ *MINISTRE WATCHES*");
