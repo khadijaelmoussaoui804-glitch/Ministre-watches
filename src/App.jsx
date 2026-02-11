@@ -27,13 +27,13 @@ export default function App() {
   const products = [
     {
       id: 1,
-      name: "Rolex Classic",
+      name: "Rolex",
       price: 200,
       category: "luxury",
       isRealPhoto: true,
       colors: [
         { name: "Vert/Or", image: "rolex1.png" },
-        { name: "Or/Blanc", image: "rolex2.png" },
+        { name: "Or/Rose", image: "rolex2.png" },
         { name: "Argenté/Or", image: "rolex4.png" },
         { name: "Vert foncé/Or", image: "rolex3.png" },
       ],
