@@ -31,10 +31,10 @@ export default function App() {
       category: "luxury",
       isRealPhoto: true,
       colors: [
-        { name: "Vert/Or", image: "rolex1.png" },
-        { name: "Or/Blanc", image: "rolex2.png" },
+        { name: "Vert foncé/Or", image: "rolex1.png" },
+        { name: "Rose/Or", image: "rolex2.png" },
         { name: "Argenté/Or", image: "rolex4.png" },
-        { name: "Vert foncé/Or", image: "rolex3.png" },
+        { name: "Vert/Or", image: "rolex3.png" },
       ],
       description: "Élégance intemporelle avec cadran et bracelet premium",
     },
@@ -60,7 +60,7 @@ export default function App() {
       colors: [
         { name: "Noir/Argenté", image: "tissot1.png" },
         { name: "Blanc/Argenté", image: "tissot2.png" },
-        { name: "Turquoise/Or", image: "tissot3.png" },
+        { name: "Vert/Or", image: "tissot3.png" },
       ],
       description: "Tissot PRX Powermatic 80 - Style sportif et moderne",
     },
