@@ -41,6 +41,19 @@ export default function App() {
     },
     {
       id: 2,
+      name: "Patek Philippe",
+      price: 170,
+      category: "luxury",
+      isRealPhoto: true,
+      colors: [
+        { name: "Marron/Argenté", image: "patek1.png" },
+        { name: "Bleu/Argenté", image: "patek2.png" },
+        { name: "Blanc/Argenté", image: "patek3.png" },
+      ],
+      description: "Design sophistiqué Patek Philippe avec boîtier en acier",
+    },
+    {
+      id: 3,
       name: "Modern Steel",
       price: 1099,
       category: "sport",
@@ -52,7 +65,7 @@ export default function App() {
       description: "Design contemporain en acier brossé avec détails bleu cobalt",
     },
     {
-      id: 3,
+      id: 4,
       name: "Minimal Black",
       price: 999,
       category: "classic",
