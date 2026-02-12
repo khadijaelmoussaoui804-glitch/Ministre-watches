@@ -12,7 +12,6 @@ export default function App() {
     phone: "",
     address: "",
     city: "",
-    email: "",
   });
   const [lightbox, setLightbox] = useState({
     isOpen: false,
@@ -54,6 +53,32 @@ export default function App() {
     },
     {
       id: 3,
+      name: "Tissot PRX",
+      price: 180,
+      category: "sport",
+      isRealPhoto: true,
+      colors: [
+        { name: "Noir/Argenté", image: "tissot1.png" },
+        { name: "Blanc/Argenté", image: "tissot2.png" },
+        { name: "Turquoise/Or", image: "tissot3.png" },
+      ],
+      description: "Tissot PRX Powermatic 80 - Style sportif et moderne",
+    },
+    {
+      id: 4,
+      name: "Casio Quartz",
+      price: 170,
+      category: "classic",
+      isRealPhoto: true,
+      colors: [
+        { name: "Vert/Cuir noir", image: "casio1.png" },
+        { name: "Noir/Cuir noir", image: "casio2.png" },
+        { name: "Bleu/Bracelet acier", image: "casio3.png" },
+      ],
+      description: "Casio Quartz vintage - Style rétro élégant et intemporel",
+    },
+    {
+      id: 5,
       name: "Modern Steel",
       price: 1099,
       category: "sport",
@@ -65,7 +90,7 @@ export default function App() {
       description: "Design contemporain en acier brossé avec détails bleu cobalt",
     },
     {
-      id: 4,
+      id: 6,
       name: "Minimal Black",
       price: 999,
       category: "classic",
@@ -209,9 +234,6 @@ export default function App() {
     parts.push("*CLIENT*");
     parts.push(customerInfo.name);
     parts.push(`📞 ${customerInfo.phone}`);
-    if (customerInfo.email) {
-      parts.push(`✉️ ${customerInfo.email}`);
-    }
     parts.push(`📍 ${customerInfo.address}, ${customerInfo.city}`);
     parts.push("");
     parts.push("━━━━━━━━━━━━━━━━━━━━");
@@ -243,7 +265,6 @@ export default function App() {
       phone: "",
       address: "",
       city: "",
-      email: "",
     });
     
     alert("Votre commande a été envoyée via WhatsApp ! Merci 🎉");
@@ -336,10 +357,6 @@ export default function App() {
               <div className="form-group">
                 <label htmlFor="phone">Téléphone *</label>
                 <input type="tel" id="phone" name="phone" value={customerInfo.phone} onChange={handleInputChange} placeholder="+212 6XX XXX XXX" required />
-              </div>
-              <div className="form-group">
-                <label htmlFor="email">Email (optionnel)</label>
-                <input type="email" id="email" name="email" value={customerInfo.email} onChange={handleInputChange} placeholder="votre@email.com" />
               </div>
               <div className="form-group">
                 <label htmlFor="address">Adresse complète *</label>
