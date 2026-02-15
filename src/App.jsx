@@ -31,10 +31,10 @@ export default function App() {
       category: "luxury",
       isRealPhoto: true,
       colors: [
-        { name: "Vert foncé/Or", image: "rolex1.png" },
-        { name: "Rose/Or", image: "rolex2.png" },
+        { name: "Vert/Or", image: "rolex1.png" },
+        { name: "Or/Blanc", image: "rolex2.png" },
         { name: "Argenté/Or", image: "rolex4.png" },
-        { name: "Vert/Or", image: "rolex3.png" },
+        { name: "Vert foncé/Or", image: "rolex3.png" },
       ],
       description: "Élégance intemporelle avec cadran et bracelet premium",
     },
@@ -60,7 +60,7 @@ export default function App() {
       colors: [
         { name: "Noir/Argenté", image: "tissot1.png" },
         { name: "Blanc/Argenté", image: "tissot2.png" },
-        { name: "Vert/Or", image: "tissot3.png" },
+        { name: "Turquoise/Or", image: "tissot3.png" },
       ],
       description: "Tissot PRX Powermatic 80 - Style sportif et moderne",
     },
@@ -79,15 +79,14 @@ export default function App() {
     },
     {
       id: 5,
-      name: "Modern Steel",
-      price: 1099,
-      category: "sport",
-      isRealPhoto: false,
+      name: "AP HOMMES",
+      price: 200,
+      category: "luxury",
+      isRealPhoto: true,
       colors: [
-        { name: "Acier/Bleu", main: "#4A5568", accent: "#63B3ED" },
-        { name: "Acier/Vert", main: "#4A5568", accent: "#48BB78" },
+        { name: "Acier/Argenté", image: "ap1.png" },
       ],
-      description: "Design contemporain en acier brossé avec détails bleu cobalt",
+      description: "Élégance iconique avec cadran 'Grande Tapisserie' et boîtier en acier.",
     },
     {
       id: 6,
@@ -100,6 +99,36 @@ export default function App() {
         { name: "Noir/Rouge", main: "#000000", accent: "#F56565" },
       ],
       description: "Minimalisme absolu, cadran noir profond et index blancs",
+    },
+    {
+      id: 7,
+      name: "Pack Casio + Tissot",
+      price: 330,
+      category: "pack",
+      isPack: true,
+      packImages: [
+        { image: "casio3.png" },
+        { image: "tissot1.png" }
+      ],
+      colors: [
+        { name: "Pack 1" },
+      ],
+      description: "Pack de 2 montres : Casio Quartz + Tissot PRX - Économisez 20 DH",
+    },
+    {
+      id: 8,
+      name: "Pack Rolex + Patek",
+      price: 350,
+      category: "pack",
+      isPack: true,
+      packImages: [
+        { image: "rolex1.png" },
+        { image: "patek1.png" }
+      ],
+      colors: [
+        { name: "Pack 2" },
+      ],
+      description: "Pack de 2 montres : Rolex Classic + Patek Philippe - Économisez 20 DH",
     },
   ];
 
@@ -201,10 +230,33 @@ export default function App() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setCustomerInfo({
-      ...customerInfo,
-      [name]: value,
-    });
+    
+    // Validation spéciale pour le champ téléphone
+    if (name === "phone") {
+      // Permettre seulement les chiffres, espaces, et le signe +
+      const cleanValue = value.replace(/[^\d\s+]/g, '');
+      
+      // Compter les chiffres sans espaces
+      const digitsOnly = cleanValue.replace(/[\s+]/g, '');
+      
+      // Limiter selon les règles:
+      // - Avec +212: max 13 chiffres (212 + 10 chiffres)
+      // - Sans +212: max 10 chiffres
+      const hasPlus = cleanValue.startsWith('+');
+      const maxDigits = hasPlus ? 12 : 10;
+      
+      if (digitsOnly.length <= maxDigits) {
+        setCustomerInfo({
+          ...customerInfo,
+          [name]: cleanValue,
+        });
+      }
+    } else {
+      setCustomerInfo({
+        ...customerInfo,
+        [name]: value,
+      });
+    }
   };
 
   const validateForm = () => {
@@ -286,15 +338,15 @@ export default function App() {
             <button onClick={() => scrollTo("products")}>Montres</button>
             <button onClick={() => scrollTo("collections")}>Collections</button>
             <button onClick={() => scrollTo("footer")}>Contact</button>
-            <button className="cart-button" onClick={() => setShowCart(!showCart)}>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <circle cx="9" cy="21" r="1" />
-                <circle cx="20" cy="21" r="1" />
-                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-              </svg>
-              {getItemCount() > 0 && <span className="cart-count">{getItemCount()}</span>}
-            </button>
           </nav>
+          <button className="cart-button" onClick={() => setShowCart(!showCart)}>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="9" cy="21" r="1" />
+              <circle cx="20" cy="21" r="1" />
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+            </svg>
+            {getItemCount() > 0 && <span className="cart-count">{getItemCount()}</span>}
+          </button>
         </div>
       </header>
 
@@ -356,7 +408,17 @@ export default function App() {
               </div>
               <div className="form-group">
                 <label htmlFor="phone">Téléphone *</label>
-                <input type="tel" id="phone" name="phone" value={customerInfo.phone} onChange={handleInputChange} placeholder="+212 6XX XXX XXX" required />
+                <input 
+                  type="tel" 
+                  id="phone" 
+                  name="phone" 
+                  value={customerInfo.phone} 
+                  onChange={handleInputChange} 
+                  placeholder="+212 6XX XXX XXX ou 06XX XXX XXX" 
+                  pattern="^(\+212[0-9]{9}|0[0-9]{9})$"
+                  title="Entrez 10 chiffres (ex: 0612345678) ou 12 chiffres avec +212"
+                  required 
+                />
               </div>
               <div className="form-group">
                 <label htmlFor="address">Adresse complète *</label>
@@ -414,6 +476,7 @@ export default function App() {
             <button className={selectedCategory === "classic" ? "active" : ""} onClick={() => { setSelectedCategory("classic"); scrollTo("products"); }}>Classic</button>
             <button className={selectedCategory === "sport" ? "active" : ""} onClick={() => { setSelectedCategory("sport"); scrollTo("products"); }}>Sport</button>
             <button className={selectedCategory === "luxury" ? "active" : ""} onClick={() => { setSelectedCategory("luxury"); scrollTo("products"); }}>Luxury</button>
+            <button className={selectedCategory === "pack" ? "active" : ""} onClick={() => { setSelectedCategory("pack"); scrollTo("products"); }}>Packs</button>
           </div>
         </div>
 
@@ -457,7 +520,25 @@ export default function App() {
                     )}
 
                     <div className="product-img">
-                      {p.isRealPhoto ? (
+                      {p.isPack ? (
+                        <div 
+                          className="pack-images-container"
+                          onClick={() => openLightbox(p, currentColorIndex)}
+                          style={{ cursor: 'pointer' }}
+                        >
+                          <img 
+                            src={`/${p.packImages[0].image}`} 
+                            alt={p.name} 
+                            className="pack-watch-img"
+                          />
+                          <div className="pack-plus">+</div>
+                          <img 
+                            src={`/${p.packImages[1].image}`} 
+                            alt={p.name} 
+                            className="pack-watch-img"
+                          />
+                        </div>
+                      ) : p.isRealPhoto ? (
                         <img 
                           src={`/${currentColor.image}`} 
                           alt={p.name} 
@@ -507,7 +588,7 @@ export default function App() {
                   <p className="product-description">{p.description}</p>
                   
                   {/* Color Selection Circles */}
-                  {p.isRealPhoto ? (
+                  {!p.isPack && p.isRealPhoto ? (
                     <div className="product-colors">
                       {p.colors.map((color, index) => (
                         <div
@@ -529,7 +610,7 @@ export default function App() {
                         </div>
                       ))}
                     </div>
-                  ) : (
+                  ) : !p.isPack ? (
                     <div className="product-colors">
                       {p.colors.map((color, index) => (
                         <div
@@ -543,7 +624,7 @@ export default function App() {
                         ></div>
                       ))}
                     </div>
-                  )}
+                  ) : null}
 
                   <div className="product-footer">
                     <span className="product-price">{p.price} DH</span>
@@ -603,7 +684,21 @@ export default function App() {
             )}
 
             <div className="lightbox-image-container">
-              {lightbox.product.isRealPhoto ? (
+              {lightbox.product.isPack ? (
+                <div className="pack-images-container" style={{ background: 'white', borderRadius: '12px', padding: '40px' }}>
+                  <img 
+                    src={`/${lightbox.product.packImages[0].image}`} 
+                    alt={lightbox.product.name}
+                    className="lightbox-pack-img"
+                  />
+                  <div className="pack-plus" style={{ fontSize: '48px' }}>+</div>
+                  <img 
+                    src={`/${lightbox.product.packImages[1].image}`} 
+                    alt={lightbox.product.name}
+                    className="lightbox-pack-img"
+                  />
+                </div>
+              ) : lightbox.product.isRealPhoto ? (
                 <img 
                   src={`/${lightbox.product.colors[lightbox.currentIndex].image}`} 
                   alt={lightbox.product.name}

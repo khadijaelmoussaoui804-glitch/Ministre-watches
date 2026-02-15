@@ -60,6 +60,7 @@ body {
   align-items: center;
   height: 70px;
   padding: 5px 0;
+  position: relative;
 }
 
 .logo {
@@ -67,6 +68,7 @@ body {
   align-items: center;
   cursor: pointer;
   transition: var(--transition-smooth);
+  z-index: 10;
 }
 
 .logo:hover {
@@ -89,6 +91,9 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .nav button {
@@ -112,7 +117,7 @@ body {
   left: 16px;
   right: 16px;
   height: 2px;
-  background: var(--color-primary);
+  background: var(--color-grey-dark);
   transform: scaleX(0);
   transition: var(--transition-smooth);
 }
@@ -126,13 +131,13 @@ body {
 }
 
 .cart-button {
-  position: relative;
   padding: 8px 14px !important;
-  margin-left: 12px;
   background: var(--color-primary) !important;
   color: var(--color-white) !important;
   border-radius: 8px;
   transition: var(--transition-smooth) !important;
+  z-index: 10;
+  position: relative;
 }
 
 .cart-button::after {
@@ -1229,21 +1234,23 @@ body {
   text-transform: uppercase;
   margin-bottom: 20px;
   min-height: 22px;
+  line-height: 22px;
 }
 
 .footer-logo-title {
   margin-bottom: 20px;
-  min-height: 22px;
+  height: 22px;
+  line-height: 22px;
   display: flex;
-  align-items: flex-start; /* Aligne le logo en haut */
+  align-items: center;
+  position: relative;
 }
 
 .footer-logo-image {
-  width: 120px;
-  height: auto;
+  height: 60px;
+  width: auto;
   object-fit: contain;
   filter: brightness(0) invert(1);
-  margin-top: -30px; /* Petit ajustement pour parfaire l'alignement */
 }
 
 .footer-section p {
@@ -1260,13 +1267,15 @@ body {
 }
 
 .footer-desc {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.6);
+  font-size: 16px; /* Même taille que les autres paragraphes */
+  color: rgba(255, 255, 255, 0.7); /* Même couleur que les autres */
   cursor: default !important; /* Pas de curseur pointer pour les descriptions */
+  margin-bottom: 12px; /* Même espacement */
 }
 
 .footer-desc:hover {
   transform: none !important; /* Pas d'effet hover pour les descriptions */
+  color: rgba(255, 255, 255, 0.7); /* Garde la même couleur au hover */
 }
 
 .footer-bottom {
@@ -1456,6 +1465,200 @@ body {
 }
 
 /* ============================================
+   AUTOMATIC ANIMATIONS
+============================================ */
+
+/* Animation au chargement de la page */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Animation du header au chargement */
+.header {
+  animation: slideDown 0.6s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Animation du hero au chargement */
+.hero-text h1 {
+  animation: fadeInLeft 0.8s ease-out;
+}
+
+.hero-text .subtitle {
+  animation: fadeInLeft 0.8s ease-out 0.2s backwards;
+}
+
+.hero-text .info {
+  animation: fadeInLeft 0.8s ease-out 0.4s backwards;
+}
+
+.hero-text .cta-button {
+  animation: fadeInUp 0.8s ease-out 0.6s backwards;
+}
+
+/* Animation des cartes de produits au scroll */
+.product-card {
+  animation: fadeInUp 0.6s ease-out;
+  animation-fill-mode: backwards;
+}
+
+.product-card:nth-child(1) { animation-delay: 0.1s; }
+.product-card:nth-child(2) { animation-delay: 0.2s; }
+.product-card:nth-child(3) { animation-delay: 0.3s; }
+.product-card:nth-child(4) { animation-delay: 0.4s; }
+.product-card:nth-child(5) { animation-delay: 0.5s; }
+.product-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Animation des cards de collection */
+.collection-card {
+  animation: scaleIn 0.6s ease-out;
+  animation-fill-mode: backwards;
+}
+
+.collection-card:nth-child(1) { animation-delay: 0.1s; }
+.collection-card:nth-child(2) { animation-delay: 0.2s; }
+.collection-card:nth-child(3) { animation-delay: 0.3s; }
+
+/* Animation du titre des sections */
+.section-header h2 {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.section-subtitle {
+  animation: fadeInUp 0.6s ease-out 0.2s backwards;
+}
+
+/* Animation des filtres de catégorie */
+.category-filters button {
+  animation: fadeInUp 0.4s ease-out;
+  animation-fill-mode: backwards;
+}
+
+.category-filters button:nth-child(1) { animation-delay: 0.1s; }
+.category-filters button:nth-child(2) { animation-delay: 0.2s; }
+.category-filters button:nth-child(3) { animation-delay: 0.3s; }
+.category-filters button:nth-child(4) { animation-delay: 0.4s; }
+
+/* Animation au hover des boutons */
+.nav button,
+.cta-button,
+.add-to-cart-btn,
+.checkout-btn,
+.cart-button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav button:hover,
+.add-to-cart-btn:hover,
+.checkout-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Pulse animation pour le panier quand il y a des items */
+.cart-count {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Animation smooth pour les images au hover */
+.product-img-container {
+  overflow: hidden;
+}
+
+.product-real-photo {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.product-card:hover .product-real-photo {
+  transform: scale(1.08);
+}
+
+/* Animation des cercles de couleur */
+.color-dot,
+.color-photo-dot {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.color-dot:hover,
+.color-photo-dot:hover {
+  transform: scale(1.2) rotate(5deg);
+}
+
+/* Animation du footer */
+.footer-section {
+  animation: fadeInUp 0.6s ease-out;
+  animation-fill-mode: backwards;
+}
+
+.footer-section:nth-child(1) { animation-delay: 0.1s; }
+.footer-section:nth-child(2) { animation-delay: 0.2s; }
+.footer-section:nth-child(3) { animation-delay: 0.3s; }
+.footer-section:nth-child(4) { animation-delay: 0.4s; }
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ============================================
    RESPONSIVE
 ============================================ */
 @media (max-width: 768px) {
@@ -1610,9 +1813,8 @@ body {
   }
 
   .footer-logo-image {
-    width: 90px;
-    height: auto;
-    margin-top: -2px; /* Ajustement léger pour mobile */
+    height: 50px; /* Logo plus grand pour mobile aussi */
+    width: auto;
   }
 
   .checkout-form-container {
@@ -1685,5 +1887,85 @@ body {
 
   .lightbox-image {
     max-height: 60vh;
+  }
+}
+
+/* ============================================
+   PACK STYLES - 2 MONTRES CÔTE À CÔTE
+============================================ */
+.pack-images-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+}
+
+.pack-watch-img {
+  width: 40%;
+  height: auto;
+  object-fit: contain;
+  transition: var(--transition-smooth);
+}
+
+.pack-plus {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.product-card:hover .pack-watch-img {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .pack-images-container {
+    gap: 10px;
+    padding: 15px;
+  }
+  
+  .pack-plus {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pack-images-container {
+    gap: 8px;
+    padding: 10px;
+  }
+  
+  .pack-plus {
+    font-size: 24px;
+  }
+  
+  .pack-watch-img {
+    width: 42%;
+  }
+}
+
+/* ============================================
+   LIGHTBOX PACK IMAGES
+============================================ */
+.lightbox-pack-img {
+  max-width: 350px;
+  max-height: 350px;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .lightbox-pack-img {
+    max-width: 250px;
+    max-height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .lightbox-pack-img {
+    max-width: 150px;
+    max-height: 150px;
   }
 }
