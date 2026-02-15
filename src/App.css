@@ -1669,16 +1669,29 @@ html {
   .header-content {
     height: 60px;
     padding: 5px 0;
+    gap: 10px;
   }
 
   .logo-image {
-    width: 70px;
+    width: 80px;
     height: auto;
   }
 
+  .nav {
+    position: static;
+    transform: none;
+    gap: 4px;
+    flex: 1;
+    justify-content: center;
+  }
+
   .nav button {
-    font-size: 11px;
-    padding: 6px 10px;
+    font-size: 10px;
+    padding: 6px 8px;
+  }
+
+  .cart-button {
+    padding: 6px 10px !important;
   }
 
   .cart-panel {
@@ -1808,6 +1821,36 @@ html {
 }
 
 @media (max-width: 480px) {
+  .header-content {
+    height: 60px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .logo-image {
+    width: 70px;
+  }
+
+  .nav {
+    order: 3;
+    width: 100%;
+    margin-top: 5px;
+    gap: 2px;
+    position: static;
+    transform: none;
+    justify-content: center;
+  }
+
+  .nav button {
+    font-size: 9px;
+    padding: 4px 6px;
+  }
+
+  .cart-button {
+    order: 2;
+    padding: 6px 10px !important;
+  }
+
   .footer-grid {
     grid-template-columns: 1fr;
   }
