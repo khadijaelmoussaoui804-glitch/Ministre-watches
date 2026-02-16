@@ -90,18 +90,6 @@ export default function App() {
     },
     {
       id: 6,
-      name: "Minimal Black",
-      price: 999,
-      category: "classic",
-      isRealPhoto: false,
-      colors: [
-        { name: "Noir/Blanc", main: "#000000", accent: "#FFFFFF" },
-        { name: "Noir/Rouge", main: "#000000", accent: "#F56565" },
-      ],
-      description: "Minimalisme absolu, cadran noir profond et index blancs",
-    },
-    {
-      id: 7,
       name: "Pack Casio + Tissot",
       price: 330,
       category: "pack",
@@ -116,7 +104,7 @@ export default function App() {
       description: "Pack de 2 montres : Casio Quartz + Tissot PRX - Économisez 20 DH",
     },
     {
-      id: 8,
+      id: 7,
       name: "Pack Rolex + Patek",
       price: 350,
       category: "pack",
@@ -130,8 +118,22 @@ export default function App() {
       ],
       description: "Pack de 2 montres : Rolex Classic + Patek Philippe - Économisez 20 DH",
     },
+    {
+      id: 8,
+      name: "Pack Patek + Tissot",
+      price: 330,
+      category: "pack",
+      isPack: true,
+      packImages: [
+        { image: "patek1.png" },
+        { image: "tissot1.png" }
+      ],
+      colors: [
+        { name: "Pack 3" },
+      ],
+      description: "Pack de 2 montres : Patek Philippe + Tissot PRX - Économisez 20 DH",
+    }
   ];
-
   const selectColor = (productId, colorIndex) => {
     setSelectedColors({
       ...selectedColors,
@@ -240,7 +242,7 @@ export default function App() {
       const digitsOnly = cleanValue.replace(/[\s+]/g, '');
       
       // Limiter selon les règles:
-      // - Avec +212: max 13 chiffres (212 + 10 chiffres)
+      // - Avec +212: max 12 chiffres (212 + 10 chiffres)
       // - Sans +212: max 10 chiffres
       const hasPlus = cleanValue.startsWith('+');
       const maxDigits = hasPlus ? 12 : 10;
