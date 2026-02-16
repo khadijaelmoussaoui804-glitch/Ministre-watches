@@ -27,11 +27,21 @@ export default function App() {
     {
       id: 1,
       name: "Rolex Classic",
-      price: 200,
+      price: 220,
       category: "luxury",
       isRealPhoto: true,
       colors: [
         { name: "Vert/Or", image: "rolex1.png" },
+      ],
+      description: "Élégance intemporelle avec cadran et bracelet premium",
+    },
+    {
+      id: 2,
+      name: "Rolex Classic",
+      price: 180,
+      category: "luxury",
+      isRealPhoto: true,
+      colors: [
         { name: "Or/Blanc", image: "rolex2.png" },
         { name: "Argenté/Or", image: "rolex4.png" },
         { name: "Vert foncé/Or", image: "rolex3.png" },
@@ -39,7 +49,7 @@ export default function App() {
       description: "Élégance intemporelle avec cadran et bracelet premium",
     },
     {
-      id: 2,
+      id: 3,
       name: "Patek Philippe",
       price: 170,
       category: "luxury",
@@ -52,7 +62,7 @@ export default function App() {
       description: "Design sophistiqué Patek Philippe avec boîtier en acier",
     },
     {
-      id: 3,
+      id: 4,
       name: "Tissot PRX",
       price: 180,
       category: "sport",
@@ -65,7 +75,7 @@ export default function App() {
       description: "Tissot PRX Powermatic 80 - Style sportif et moderne",
     },
     {
-      id: 4,
+      id: 5,
       name: "Casio Quartz",
       price: 170,
       category: "classic",
@@ -78,7 +88,7 @@ export default function App() {
       description: "Casio Quartz vintage - Style rétro élégant et intemporel",
     },
     {
-      id: 5,
+      id: 6,
       name: "AP HOMMES",
       price: 200,
       category: "luxury",
@@ -89,7 +99,7 @@ export default function App() {
       description: "Élégance iconique avec cadran 'Grande Tapisserie' et boîtier en acier.",
     },
     {
-      id: 6,
+      id: 7,
       name: "Pack Casio + Tissot",
       price: 330,
       category: "pack",
@@ -104,7 +114,7 @@ export default function App() {
       description: "Pack de 2 montres : Casio Quartz + Tissot PRX - Économisez 20 DH",
     },
     {
-      id: 7,
+      id: 8,
       name: "Pack Rolex + Patek",
       price: 350,
       category: "pack",
@@ -119,7 +129,7 @@ export default function App() {
       description: "Pack de 2 montres : Rolex Classic + Patek Philippe - Économisez 20 DH",
     },
     {
-      id: 8,
+      id: 9,
       name: "Pack Patek + Tissot",
       price: 330,
       category: "pack",
@@ -132,7 +142,7 @@ export default function App() {
         { name: "Pack 3" },
       ],
       description: "Pack de 2 montres : Patek Philippe + Tissot PRX - Économisez 20 DH",
-    }
+    },
   ];
   const selectColor = (productId, colorIndex) => {
     setSelectedColors({
