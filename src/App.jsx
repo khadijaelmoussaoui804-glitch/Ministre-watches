@@ -43,7 +43,6 @@ export default function App() {
       isRealPhoto: true,
       colors: [
         { name: "Or/Blanc", image: "rolex2.png" },
-        { name: "Argenté/Or", image: "rolex4.png" },
         { name: "Vert foncé/Or", image: "rolex3.png" },
       ],
       description: "Élégance intemporelle avec cadran et bracelet premium",
@@ -82,7 +81,6 @@ export default function App() {
       isRealPhoto: true,
       colors: [
         { name: "Vert/Cuir noir", image: "casio1.png" },
-        { name: "Noir/Cuir noir", image: "casio2.png" },
         { name: "Bleu/Bracelet acier", image: "casio3.png" },
       ],
       description: "Casio Quartz vintage - Style rétro élégant et intemporel",
